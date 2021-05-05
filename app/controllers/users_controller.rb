@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
     include UsersHelper
+     
+    def index
+        @user = User.all
+    end
 
     def new
         @user = User.new
