@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     include UsersHelper
      
     def index
-        @user = User.all
+        @users = User.all
     end
 
     def new
@@ -10,14 +10,14 @@ class UsersController < ApplicationController
     end
 
     def show
-        @user = User.find[params:id]
+        @user = User.find(params[:id])
     end
     
     def create
         @user = User.new(user_params)
         @user.save
-        session[:user_id] = user.id
+        session[:user_id] = @user.id
         flash.notice = "#{@user.name} successfully created. Welcome!"
-        redirect_to user_path(@user)
+        redirect_to @user
     end
 end
