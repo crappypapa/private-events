@@ -18,6 +18,6 @@ class UsersController < ApplicationController
         @user.save
         session[:user_id] = @user.id
         flash.notice = "#{@user.name} successfully created. Welcome!"
-        redirect_to @user
+        redirect_to @event
     end
 end
