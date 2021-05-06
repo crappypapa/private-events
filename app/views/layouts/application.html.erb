@@ -11,6 +11,52 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <div class="notification">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="notification">
+        <p class="alert"><%= alert %></p>
+      </div>
+    <% end %>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <%= link_to root_path, class: "navbar-item" do %>
+          <h1>Events</h1>
+        <% end %>
+      </div>
+
+      <div id="navbarExample" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="d-flex" >
+              <p class= 'control'>
+                <%= link_to "Create event", new_event_path %>
+              </p>
+              <% if current_user %>
+                <p class= 'control'>
+                  <%= link_to current_user.name, user_path(current_user), class: "btn" %>
+                </p>
+                <p class= 'control'>
+                  <%= link_to "Log out", logout_path, class: "btn" %>
+                </p>
+              <% else %>
+                <p class="control">
+                  <%= link_to 'Sign In', login_path, class: "btn" %>
+                </p>
+						    <p class="control">
+                  <%= link_to 'Sign Up', signup_path, class: "btn" %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
