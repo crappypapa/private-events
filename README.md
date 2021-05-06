@@ -25,7 +25,7 @@ run  ```yarn ```
 
 run ```bundle```
 
-run ```rails c ``` to open rails  console and be able to interact with the models.
+run ```rails s``` in your terminal to open rails server and type ```localhost:3000``` in your browser address bar to access the web app
 
 ## Authors
 
@@ -46,7 +46,7 @@ run ```rails c ``` to open rails  console and be able to interact with the model
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/crappypapa/private-events/issues).
 
 ## Show your support
 
@@ -56,7 +56,3 @@ Give a ⭐️ if you like this project!
 
 - Microverse
 - The Odin Project
-
-## 📝 License
-
-This project is [MIT](lic.url) licensed.
