@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Creator:</strong>
+  <%= @event.creator.name %>
+</p>
+
+<p>
   <strong>Title:</strong>
   <%= @event.title %>
 </p>
@@ -19,6 +24,18 @@
   <strong>Attendance:</strong>
   <%= @event.attendees %>
 </p>
+
+<% if @event.attendees.empty? %>
+<div class="list-group">
+  <li class="list-group-item text-muted">This event has no attendees yet</li>
+</div>
+<% else %>
+  <div class="list-group">
+    <% @event.attendees.each do |attendee| %>
+    <li class="list-group-item"> <%= attendee.name %> </li>
+    <% end %>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
