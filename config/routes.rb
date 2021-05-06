@@ -3,9 +3,15 @@ Rails.application.routes.draw do
   get 'signup' => 'users#new', as: 'signup'
   get 'login' => 'sessions#new', as: 'login'
   get 'logout' => 'sessions#destroy', as: 'logout'
-  resources :events
-  resources :sessions
+  resources :events do
+    member do
+      get 'attend'
+      get 'cancel_attend'
+    end
+  end
   resources :users
+  resources :sessions , only: [:new, :create, :destroy]
+ 
   
    
 
