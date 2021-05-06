@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
     include UsersHelper
+
+    before_action :require_login, except: [:new, :create]
      
     def index
         @users = User.all
@@ -18,6 +20,6 @@ class UsersController < ApplicationController
         @user.save
         session[:user_id] = @user.id
         flash.notice = "#{@user.name} successfully created. Welcome!"
-        redirect_to @event
+        redirect_to user_path(@user)
     end
 end
