@@ -27,17 +27,7 @@
 
 <p>Participants</p>
 
-<% if @event.attendees.empty? %>
-<div >
-  <li >This event has no attendees yet</li>
-</div>
-<% else %>
-  <div>
-    <% @event.attendees.each do |attendee| %>
-    <li> <%= attendee.name %> </li>
-    <% end %>
-  </div>
-<% end %>
+<%= event_attendance(@event) %>
 
   
     <% if current_user == @event.creator %>
@@ -51,7 +41,4 @@
     <% end %>
   </div>
 </div>
-
-
-
 
