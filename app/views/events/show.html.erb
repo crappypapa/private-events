@@ -41,7 +41,7 @@
 
   
     <% if current_user == @event.creator %>
-      <%= link_to 'Edit', edit_event_path, class: "btn" %>
+     
       <%= link_to 'Delete', event_path, method: :delete, class: "btn",
                             data: { confirm: "Delete this event?"} %>
     <% elsif @event.attendees.include?(current_user) %>
