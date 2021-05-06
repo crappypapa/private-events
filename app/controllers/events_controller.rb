@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :require_login, except: [:index]
 
   # GET /events or /events.json
   def index
@@ -54,6 +55,22 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def attend
+    @event = Event.find(params[:id])
+    if @event.attendees.include?(current_user)
+      redirect_to @event, notice: "You are already on the list"
+    else
+      @event.attendees << current_user
+      redirect_to @event
+    end
+  end
+
+  def cancel_attend
+    @event = Event.find(params[:id])
+    @event.attendees.delete(current_user)
+    redirect_to @event, notice: "You are no longer attending this event"
   end
 
   private
