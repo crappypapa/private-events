@@ -16,26 +16,42 @@
 </p>
 
 <p>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</p>
+
+<p>
   <strong>Date:</strong>
   <%= @event.date %>
 </p>
 
-<p>
-  <strong>Attendance:</strong>
-  <%= @event.attendees %>
-</p>
+<p>Participants</p>
 
 <% if @event.attendees.empty? %>
-<div class="list-group">
-  <li class="list-group-item text-muted">This event has no attendees yet</li>
+<div >
+  <li >This event has no attendees yet</li>
 </div>
 <% else %>
-  <div class="list-group">
+  <div>
     <% @event.attendees.each do |attendee| %>
-    <li class="list-group-item"> <%= attendee.name %> </li>
+    <li> <%= attendee.name %> </li>
     <% end %>
   </div>
 <% end %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+  
+    <% if current_user == @event.creator %>
+      <%= link_to 'Edit', edit_event_path, class: "btn" %>
+      <%= link_to 'Delete', event_path, method: :delete, class: "btn",
+                            data: { confirm: "Delete this event?"} %>
+    <% elsif @event.attendees.include?(current_user) %>
+      <%= link_to 'Cancel', cancel_attend_event_path, class: "btn" %>
+    <% else %>
+      <%= link_to 'Attend', attend_event_path, class: "btn" unless @event.date < Time.now %>
+    <% end %>
+  </div>
+</div>
+
+
+
+
