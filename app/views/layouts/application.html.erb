@@ -11,6 +11,28 @@
   </head>
 
   <body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <%= link_to root_path, class: "navbar-item" do %>
+          <h1>Events</h1>
+        <% end %>
+      </div>
+
+      <div id="navbarExample" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="d-flex" >
+              <p class= 'control'>
+                <%= link_to "Create event", new_event_path %>
+              </p>
+             <%= app_nav %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
