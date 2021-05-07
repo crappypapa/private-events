@@ -25,6 +25,8 @@ run  ```yarn ```
 
 run ```bundle```
 
+run ```rails db:migrate``` in your terminal to populate the database
+
 run ```rails s``` in your terminal to open rails server and type ```localhost:3000``` in your browser address bar to access the web app
 
 ## Authors
