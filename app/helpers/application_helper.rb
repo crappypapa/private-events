@@ -2,7 +2,7 @@ module ApplicationHelper
   def app_nav
     if current_user
       "<div>
-        #{link_to current_user.name, user_path(current_user), class: 'btn'}
+        #{link_to current_user.username, user_path(current_user), class: 'btn'}
         #{link_to 'Log out', logout_path, class: 'btn'}
       </div>".to_s.html_safe
     else
